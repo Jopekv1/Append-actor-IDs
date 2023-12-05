@@ -12,7 +12,7 @@ for (let i = 0; i < castList.length; i++) {
     continue;
   }
   var actorPage = getActorPage(photo[0].children[0].href);
-  var info = actorPage.getElementsByClassName("sc-7f1a92f5-2 fStAXw");
+  var info = actorPage.getElementsByClassName("hero__primary-text-suffix");
   if(info.length == 0){
     continue;
   }
@@ -23,7 +23,7 @@ var producentList = document.getElementsByClassName("name")
 for (let i = 0; i < producentList.length; i++) {  
   let producent = producentList[i].children[0]
   var actorPage = getActorPage(producent.href);
-  var info = actorPage.getElementsByClassName("sc-7f1a92f5-2 fStAXw");
+  var info = actorPage.getElementsByClassName("hero__primary-text-suffix");
   if(info.length == 0){
     continue;
   }
