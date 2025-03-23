@@ -10,7 +10,7 @@ var castList = document.getElementsByClassName("ipc-link ipc-link--base name-cre
 console.log("Found " + castList.length + " entries");
 
 for (let i = 0; i < castList.length; i++) {
-  console.log("Start processing " + i);
+  console.log("Start processing " + i + "/" + castList.length);
   
   let actorElement = castList[i];
   
@@ -21,10 +21,10 @@ for (let i = 0; i < castList.length; i++) {
   console.log("Obtain suffix");
   
   if(info.length == 0){
-    console.log("Finished processing " + i + " no suffix found");
+    console.log("Finished processing " + i + "/" + castList.length + " no suffix found");
     continue;
   }
   
   actorElement.innerText+=info[0].innerText;
-  console.log("Finished processing " + i + " suffix added");
+  console.log("Finished processing " + i + "/" + castList.length + " suffix added");
 }
