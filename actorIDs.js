@@ -5,27 +5,24 @@ function getActorPage(url){
     parser = new DOMParser();
     return parser.parseFromString(request.responseText,"text/html"); 
 }
-var castList = document.getElementsByClassName("cast_list")[0].children[0].children
+var castList = document.getElementsByClassName("ipc-link ipc-link--base name-credits--title-text name-credits--title-text-big")
+  console.log("Found " + castList.length + " entries");
 for (let i = 0; i < castList.length; i++) {
-  let photo = castList[i].getElementsByClassName("primary_photo")
-  if(photo.length == 0){
-    continue;
-  }
-  var actorPage = getActorPage(photo[0].children[0].href);
+  console.log("Start processing " + i);
+  
+  let actorElement = castList[i];
+  
+  var actorPage = getActorPage(actorElement.href);
+  console.log("Downloaded actor page");
+  
   var info = actorPage.getElementsByClassName("hero__primary-text-suffix");
+  console.log("Obtain suffix");
+  
   if(info.length == 0){
+    console.log("Finished processing " + i + " no suffix found");
     continue;
   }
-  castList[i].getElementsByTagName("td")[1].getElementsByTagName("a")[0].innerText+=info[0].innerText;
-}
-
-var producentList = document.getElementsByClassName("name")
-for (let i = 0; i < producentList.length; i++) {  
-  let producent = producentList[i].children[0]
-  var actorPage = getActorPage(producent.href);
-  var info = actorPage.getElementsByClassName("hero__primary-text-suffix");
-  if(info.length == 0){
-    continue;
-  }
-  producent.innerText+=info[0].innerText;
+  
+  actorElement.innerText+=info[0].innerText;
+  console.log("Finished processing " + i + " suffix added");
 }
